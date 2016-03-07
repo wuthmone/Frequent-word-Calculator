@@ -21,6 +21,7 @@ class LineAnalyzer
         highest = count[0].to_a
         @highest_wf_count = highest[1]
         @highest_wf_words << highest[0]
+        
     end
 end
 
