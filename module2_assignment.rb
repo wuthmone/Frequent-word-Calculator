@@ -34,17 +34,17 @@ end
 class Solution
   attr_accessor :analyzer,:highest_count_across_lines,:highest_count_words_across_lines
     
-
-    
     def initialize()
-      @analyzers = []
-      @highest_count_across_lines = 0
-      @highest_count_words_across_lines = []
+      @analyzers = Array.new
     end
+
+    def analyzers
+    	@analyzers
+    end
+
 
     def analyze_file()
       line_number = 1
-    
         File.foreach('test.txt') do |line|  
           @analyzers << LineAnalyzer.new(line,line_number)
           line_number +=  1
@@ -52,6 +52,7 @@ class Solution
     end
 
     def calculate_line_with_highest_frequency()
+    	@highest_count_across_lines = 0
       unless @analyzers.empty?
         @analyzers.each do |element| 
          if element.highest_wf_count > highest_count_across_lines 
@@ -59,6 +60,7 @@ class Solution
          end
         end 
       end
+      @highest_count_words_across_lines = Array.new
       unless @analyzers.empty?
         @analyzers.each do |element|
           if @highest_count_across_lines == element.highest_wf_count
